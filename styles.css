@@ -1,0 +1,478 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #0ab024 0%, #0c8920 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    gap: 20px;
+}
+
+.logo {
+    max-width: 300px;
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.container {
+    background: white;
+    border-radius: 20px;
+    padding: 40px;
+    max-width: 600px;
+    width: 100%;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+    font-size: 2.5em;
+}
+
+h2 {
+    color: #555;
+    margin-bottom: 20px;
+    font-size: 1.5em;
+}
+
+/* Toggle de modo oscuro */
+.dark-mode-toggle-container {
+    text-align: center;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #eee;
+}
+
+/* Menú de ejercicios */
+.menu {
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+    border-bottom: 2px solid #eee;
+}
+
+.button-group {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.menu-btn {
+    flex: 1;
+    padding: 15px 25px;
+    font-size: 1.1em;
+    font-weight: 600;
+    border: 2px solid #0ab024;
+    background: white;
+    color: #0ab024;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.menu-btn:hover {
+    background: #f0f0f0;
+}
+
+.menu-btn.active {
+    background: #0ab024;
+    color: #f6d20b;
+}
+
+/* Ejercicios */
+.ejercicio {
+    display: none;
+    animation: fadeIn 0.5s ease;
+}
+
+.ejercicio.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Display box */
+.display-box {
+    background: linear-gradient(135deg, #0ab024 0%, #0c8920 100%);
+    border-radius: 15px;
+    padding: 40px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+/* Nota al Azar */
+.nota-display {
+    color: #f6d20b;
+}
+
+.nota-display .nota {
+    display: block;
+    font-size: 4em;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.nota-display .cuerda {
+    display: block;
+    font-size: 2em;
+    font-weight: bold;
+    color: #f6d20b;
+}
+
+/* Metrónomo */
+.bpm-display {
+    color: #f6d20b;
+    margin-bottom: 20px;
+}
+
+#bpmValue {
+    display: block;
+    font-size: 4em;
+    font-weight: bold;
+}
+
+.bpm-label {
+    display: block;
+    font-size: 1.2em;
+    opacity: 0.9;
+}
+
+.beat-indicator {
+    width: 80px;
+    height: 80px;
+    background: rgba(246, 210, 11, 0.3);
+    border-radius: 50%;
+    margin: 20px auto 0;
+    transition: all 0.05s ease;
+}
+
+.beat-indicator.beat {
+    background: #f6d20b;
+    transform: scale(1.1);
+}
+
+/* Control de tempo */
+.tempo-control {
+    margin-bottom: 30px;
+}
+
+.tempo-control label {
+    display: block;
+    margin-bottom: 10px;
+    color: #555;
+    font-weight: 600;
+}
+
+#tempoSlider {
+    width: 100%;
+    height: 8px;
+    border-radius: 5px;
+    background: #ddd;
+    outline: none;
+    -webkit-appearance: none;
+}
+
+#tempoSlider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #0ab024;
+    cursor: pointer;
+}
+
+#tempoSlider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #0ab024;
+    cursor: pointer;
+    border: none;
+}
+
+.tempo-marks {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
+    color: #999;
+    font-size: 0.9em;
+}
+
+.bpm-input-group {
+    margin-top: 20px;
+}
+
+.bpm-input-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #555;
+    font-weight: 600;
+    font-size: 0.95em;
+}
+
+#bpmInput,
+#bpmInputCombinado {
+    width: 100%;
+    padding: 12px;
+    font-size: 1.1em;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: 600;
+    color: #0ab024;
+    transition: border-color 0.3s ease;
+}
+
+#bpmInput:focus,
+#bpmInputCombinado:focus {
+    outline: none;
+    border-color: #0ab024;
+}
+
+/* Ejercicio combinado */
+.ejercicio-description {
+    text-align: center;
+    color: #666;
+    margin-bottom: 20px;
+    font-style: italic;
+}
+
+.bpm-display-small {
+    color: #f6d20b;
+    margin-top: 15px;
+    opacity: 0.9;
+}
+
+#bpmValueCombinado {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.bpm-label-small {
+    font-size: 1em;
+}
+
+/* Botones de acción */
+.action-btn {
+    width: 100%;
+    padding: 18px;
+    font-size: 1.2em;
+    font-weight: 600;
+    background: #0ab024;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.action-btn:hover {
+    background: #0c8920;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(10, 176, 36, 0.4);
+}
+
+.action-btn:active {
+    transform: translateY(0);
+}
+
+/* Toggle de alteraciones */
+.toggle-container {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.toggle-label {
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    gap: 12px;
+    user-select: none;
+}
+
+.toggle-label input[type="checkbox"] {
+    display: none;
+}
+
+.toggle-slider {
+    position: relative;
+    width: 50px;
+    height: 26px;
+    background: #ccc;
+    border-radius: 13px;
+    transition: background 0.3s ease;
+}
+
+.toggle-slider::before {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: white;
+    top: 3px;
+    left: 3px;
+    transition: transform 0.3s ease;
+}
+
+.toggle-label input[type="checkbox"]:checked + .toggle-slider {
+    background: #0ab024;
+}
+
+.toggle-label input[type="checkbox"]:checked + .toggle-slider::before {
+    transform: translateX(24px);
+}
+
+.toggle-text {
+    color: #555;
+    font-weight: 500;
+    font-size: 0.95em;
+}
+
+/* Modo Oscuro */
+body.dark-mode {
+    background: linear-gradient(135deg, #1b263a 0%, #273853 100%);
+}
+
+body.dark-mode .container {
+    background: #294163;
+    color: #e8edf6;
+}
+
+body.dark-mode h2 {
+    color: #ccd8eb;
+}
+
+body.dark-mode .menu-btn {
+    border-color: #4a76ad;
+    background: #2e4a76;
+    color: #ccd8eb;
+}
+
+body.dark-mode .menu-btn:hover {
+    background: #385d91;
+}
+
+body.dark-mode .menu-btn.active {
+    background: #4a76ad;
+    color: #f6d20b;
+}
+
+body.dark-mode .display-box {
+    background: linear-gradient(135deg, #2e4a76 0%, #385d91 100%);
+}
+
+body.dark-mode .action-btn {
+    background: #4a76ad;
+}
+
+body.dark-mode .action-btn:hover {
+    background: #6c93c4;
+    box-shadow: 0 5px 15px rgba(74, 118, 173, 0.4);
+}
+
+body.dark-mode #tempoSlider,
+body.dark-mode #tempoSliderCombinado {
+    background: #385d91;
+}
+
+body.dark-mode #tempoSlider::-webkit-slider-thumb,
+body.dark-mode #tempoSliderCombinado::-webkit-slider-thumb {
+    background: #6c93c4;
+}
+
+body.dark-mode #tempoSlider::-moz-range-thumb,
+body.dark-mode #tempoSliderCombinado::-moz-range-thumb {
+    background: #6c93c4;
+}
+
+body.dark-mode .tempo-control label {
+    color: #ccd8eb;
+}
+
+body.dark-mode .tempo-marks {
+    color: #a0b9d9;
+}
+
+body.dark-mode .bpm-input-group label {
+    color: #ccd8eb;
+}
+
+body.dark-mode #bpmInput,
+body.dark-mode #bpmInputCombinado {
+    background: #2e4a76;
+    border-color: #385d91;
+    color: #6c93c4;
+}
+
+body.dark-mode #bpmInput:focus,
+body.dark-mode #bpmInputCombinado:focus {
+    border-color: #6c93c4;
+}
+
+body.dark-mode .ejercicio-description {
+    color: #a0b9d9;
+}
+
+body.dark-mode .toggle-text {
+    color: #ccd8eb;
+}
+
+body.dark-mode .toggle-slider {
+    background: #385d91;
+}
+
+body.dark-mode .toggle-label input[type="checkbox"]:checked + .toggle-slider {
+    background: #4a76ad;
+}
+
+body.dark-mode .menu {
+    border-bottom-color: #385d91;
+}
+
+body.dark-mode .dark-mode-toggle-container {
+    border-bottom-color: #385d91;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .container {
+        padding: 25px;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+
+    .nota-display .nota,
+    #bpmValue {
+        font-size: 3em;
+    }
+
+    .button-group {
+        flex-direction: column;
+    }
+}

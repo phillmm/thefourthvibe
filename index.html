@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE FOURTH VIBE</title>
+    <link rel="icon" type="image/png" href="assets/thefourthvibe_mini.png">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="dark-mode">
+    <img src="assets/logo_horizontal.png" alt="THE FOURTH VIBE" class="logo">
+    
+    <div class="container">
+        <!-- Toggle de modo oscuro -->
+        <div class="dark-mode-toggle-container">
+            <label class="toggle-label">
+                <input type="checkbox" id="toggleDarkMode" checked>
+                <span class="toggle-slider"></span>
+                <span class="toggle-text">🌙 Modo Oscuro</span>
+            </label>
+        </div>
+        
+        <!-- Menú de selección de ejercicios -->
+        <div class="menu">
+            <h2>Selecciona un ejercicio:</h2>
+            <div class="button-group">
+                <button id="btnNotasAzar" class="menu-btn active">Nota al Azar</button>
+                <button id="btnMetronomo" class="menu-btn">Metrónomo</button>
+                <button id="btnCombinado" class="menu-btn">Combinado</button>
+            </div>
+        </div>
+
+        <!-- Ejercicio 1: Nota al Azar -->
+        <div id="ejercicioNotasAzar" class="ejercicio active">
+            <h2>Nota al Azar en una Cuerda</h2>
+            <div class="toggle-container">
+                <label class="toggle-label">
+                    <input type="checkbox" id="toggleAlteraciones" checked>
+                    <span class="toggle-slider"></span>
+                    <span class="toggle-text">Incluir sostenidos y bemoles</span>
+                </label>
+                <label class="toggle-label">
+                    <input type="checkbox" id="toggleQuintaCuerda">
+                    <span class="toggle-slider"></span>
+                    <span class="toggle-text">Incluir 5ª cuerda (Si)</span>
+                </label>
+            </div>
+            <div class="display-box">
+                <div id="notaDisplay" class="nota-display">
+                    <span class="nota">-</span>
+                    <span class="cuerda">Presiona el botón para comenzar</span>
+                </div>
+            </div>
+            <button id="btnGenerarNota" class="action-btn">Generar Nota</button>
+        </div>
+        <!-- Ejercicio 2: Metrónomo -->
+        <div id="ejercicioMetronomo" class="ejercicio">
+            <h2>Metrónomo</h2>
+            <div class="display-box">
+                <div class="bpm-display">
+                    <span id="bpmValue">120</span>
+                    <span class="bpm-label">BPM</span>
+                </div>
+                <div class="beat-indicator" id="beatIndicator"></div>
+            </div>
+            <div class="tempo-control">
+                <label for="tempoSlider">Ajustar Tempo:</label>
+                <input type="range" id="tempoSlider" min="40" max="240" value="120" step="1">
+                <div class="tempo-marks">
+                    <span>40</span>
+                    <span>120</span>
+                    <span>240</span>
+                </div>
+                <div class="bpm-input-group">
+                    <label for="bpmInput">O escribe el BPM:</label>
+                    <input type="number" id="bpmInput" min="40" max="240" value="120">
+                </div>
+            </div>
+            <button id="btnToggleMetronomo" class="action-btn">Iniciar</button>
+        </div>
+
+        <!-- Ejercicio 3: Combinado -->
+        <div id="ejercicioCombinado" class="ejercicio">
+            <h2>Ejercicio Combinado</h2>
+            <p class="ejercicio-description">El metrónomo generará una nota nueva en cada beat</p>
+            <div class="toggle-container">
+                <label class="toggle-label">
+                    <input type="checkbox" id="toggleAlteracionesCombinado" checked>
+                    <span class="toggle-slider"></span>
+                    <span class="toggle-text">Incluir sostenidos y bemoles</span>
+                </label>
+                <label class="toggle-label">
+                    <input type="checkbox" id="toggleQuintaCuerdaCombinado">
+                    <span class="toggle-slider"></span>
+                    <span class="toggle-text">Incluir 5ª cuerda (Si)</span>
+                </label>
+            </div>
+            <div class="display-box">
+                <div id="notaDisplayCombinado" class="nota-display">
+                    <span class="nota">-</span>
+                    <span class="cuerda">Presiona iniciar para comenzar</span>
+                </div>
+                <div class="beat-indicator" id="beatIndicatorCombinado"></div>
+                <div class="bpm-display-small">
+                    <span id="bpmValueCombinado">120</span>
+                    <span class="bpm-label-small">BPM</span>
+                </div>
+            </div>
+            <div class="tempo-control">
+                <label for="tempoSliderCombinado">Ajustar Tempo:</label>
+                <input type="range" id="tempoSliderCombinado" min="40" max="240" value="120" step="1">
+                <div class="tempo-marks">
+                    <span>40</span>
+                    <span>120</span>
+                    <span>240</span>
+                </div>
+                <div class="bpm-input-group">
+                    <label for="bpmInputCombinado">O escribe el BPM:</label>
+                    <input type="number" id="bpmInputCombinado" min="40" max="240" value="120">
+                </div>
+            </div>
+            <button id="btnToggleCombinado" class="action-btn">Iniciar</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
