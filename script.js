@@ -32,10 +32,27 @@ const cuerdasBase = [
 
 const quintaCuerda = { numero: 5, nombre: '5ª cuerda (Si)' };
 
+// Función para actualizar el favicon
+function actualizarFavicon(ruta) {
+    let link = document.querySelector("link[rel~='icon']");
+    if (!link) {
+        link = document.createElement('link');
+        link.rel = 'icon';
+        document.head.appendChild(link);
+    }
+    link.type = 'image/png';
+    link.href = ruta + '?v=' + new Date().getTime(); // Cache bust
+}
+
 // Inicialización
 document.addEventListener('DOMContentLoaded', () => {
     inicializarAudio();
     configurarEventos();
+    
+    // Establecer el favicon inicial según el modo
+    if (document.body.classList.contains('dark-mode')) {
+        actualizarFavicon('assets/thefourthvibe_mini_dark.png');
+    }
 });
 
 // Configurar eventos
@@ -44,8 +61,10 @@ function configurarEventos() {
     document.getElementById('toggleDarkMode').addEventListener('change', (e) => {
         if (e.target.checked) {
             document.body.classList.add('dark-mode');
+            actualizarFavicon('assets/thefourthvibe_mini_dark.png');
         } else {
             document.body.classList.remove('dark-mode');
+            actualizarFavicon('assets/thefourthvibe_mini.png');
         }
     });
 
